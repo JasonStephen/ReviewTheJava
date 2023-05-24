@@ -37,12 +37,32 @@ public class Main {
             for(j=1;j<seat;j++)
             {
                 System.out.println("[INFO]请输入第"+i+"组第"+j+"位练习生的姓名");
-                people[i][j].name = scanner.next();
+                people[i-1][j-1].name = scanner.next();
+                boolean isDuplicate = false;
+                verify_human:while(true){
+                    isDuplicate = false;
+                    for (int x = 0; x < i; x++) {
+                        for (int y = 0; y < j; y++) {
+                            if (people[x][y].name.equals(people[i-1][j-1].name)) {
+                                isDuplicate = true;
+                                break verify_human;
+                            }
+                        }
+                    }
+
+                    if (isDuplicate) {
+                        System.out.println("[ERROR]姓名重复，请重新输入");
+                        people[i-1][j-1].name = scanner.next();
+                    } else {
+                        System.out.println("[SUCCESS]姓名符合要求");
+                        break verify_human;
+                    }
+                }
 
                 System.out.println("[INFO]请输入第"+i+"组第"+j+"位练习生的练习时长");
-                people[i][j].year = scanner.nextDouble();
+                people[i-1][j-1].year = scanner.nextDouble();
                 System.out.println("[INFO]请输入第"+i+"组第"+j+"位练习生的爱好");
-                people[i][j].favor = scanner.next();
+                people[i-1][j-1].favor = scanner.next();
                 testNo4.intro();
             }
         }
