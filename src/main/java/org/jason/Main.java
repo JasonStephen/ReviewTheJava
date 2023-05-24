@@ -32,25 +32,24 @@ public class Main {
         //定义顺序i,j
         int i,j;
         //添加成员
-        for(i=1;i<group;i++)
+        for(i=1;i<=group;i++)
         {
-            for(j=1;j<seat;j++)
+            for(j=1;j<=seat;j++)
             {
                 System.out.println("[INFO]请输入第"+i+"组第"+j+"位练习生的姓名");
                 people[i-1][j-1].name = scanner.next();
-                boolean isDuplicate = false;
-                verify_human:while(true){
-                    isDuplicate = false;
+                boolean verify = false;
+                verify_human:while(true){ //判断练习生名字是否重复
+                    verify = false;
                     for (int x = 0; x < i; x++) {
                         for (int y = 0; y < j; y++) {
                             if (people[x][y].name.equals(people[i-1][j-1].name)) {
-                                isDuplicate = true;
+                                verify = true;
                                 break verify_human;
                             }
                         }
                     }
-
-                    if (isDuplicate) {
+                    if (verify) {
                         System.out.println("[ERROR]姓名重复，请重新输入");
                         people[i-1][j-1].name = scanner.next();
                     } else {
@@ -61,13 +60,22 @@ public class Main {
 
                 System.out.println("[INFO]请输入第"+i+"组第"+j+"位练习生的练习时长");
                 people[i-1][j-1].year = scanner.nextDouble();
+                verify_year:while(true){ //判断练习时长是否为负数
+                    if (people[i-1][j-1].year<0) {
+                        System.out.println("[ERROR]练习时长不能为负数，请重新输入");
+                        people[i-1][j-1].year = scanner.nextDouble();
+                    }else{
+                        System.out.println("[SUCCESS]练习时长符合要求");
+                        break verify_year;
+                    }
+                }
+
                 System.out.println("[INFO]请输入第"+i+"组第"+j+"位练习生的爱好");
                 people[i-1][j-1].favor = scanner.next();
-                testNo4.intro();
+
+                testNo4.intro(); //调用testNo4类中的intro方法，输出最终结果
             }
         }
-
-
         scanner.close();
     }
 }
