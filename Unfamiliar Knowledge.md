@@ -140,141 +140,231 @@ public class Example {
 - 多态
 
 ### 4.2 类与对象
-1. 类的定义格式： 
-    ``` 
-    class 类名{
-        属性;
-        方法;
+### 1. 类的定义格式： 
+``` 
+class 类名{
+    属性;
+    方法;
+}
+```
+
+### 2. 类中可以定义的内容：
+- 属性：成员变量
+- 方法：成员方法
+
+代码示例：
+```java
+public class testNo4 {
+    public static String name;
+    public static double year;
+    public static String favor;
+    public static void intro(){
+        System.out.println("大家好，ta是练习时长"+year+"年的练习生"+name+"，喜欢"+favor);
     }
-    ```
+}
+```
+### 4.3 对象的创建和使用
+- 创建对象的格式：类名 对象名 = new 类名();
+- 使用对象的格式：对象名.对象成员
 
-2. 类中可以定义的内容：
-    - 属性：成员变量
-    - 方法：成员方法
-
-    代码示例：
-    ```java
-    public class testNo4 {
-        public static String name;
-        public static double year;
-        public static String favor;
-        public static void intro(){
-            System.out.println("大家好，ta是练习时长"+year+"年的练习生"+name+"，喜欢"+favor);
-        }
-    }
-    ```
-3. 对象的创建和使用
-    - 创建对象的格式：类名 对象名 = new 类名();
-    - 使用对象的格式：对象名.对象成员
-
-    例如：testNo4[][] people = new testNo4[group][seat];
+  例如：testNo4[][] people = new testNo4[group][seat];
     
-    代码示例：
+  代码示例：
+  ```java
+  class Student {
+      String name;
+      void read() {  
+            System.out.println("大家好，我是" + name + ",我在看书!");
+      }
+  }
+  public class Test {
+      public static void main(String[] args[]) {  
+            Student stu = new Student();         //创建并实例化对象
+      }
+  }
+  ```
+
+### 4.4 访问控制权限
+- public：公共的
+- private：私有的
+- protected：受保护的
+- default：默认的
+   
+  |  访问控制权限   | 同一个类中 | 同一个包的类 | 不同包的子类 | 全局范围 |
+  |:---------:|:-----:|:------:|:------:|:----:|
+  |  public   |   √   |   √    |   √    |  √   |
+  | protected |   √   |   √    |   √    |  ×   |
+  |  default  |   √   |   √    |   ×    |  ×   |
+  |  private  |   √   |   ×    |   ×    |  ×   |
+
+  代码块举例：
+  ```java
+   public class Test {
+      public int aa;	//aa可以被所有的类访问
+      protected boolean bb; //bb可以被所有子类以及本包的类访问
+      void cc() { 	//默认访问权限，能在本包范围内问
+          System.out.println("包访问权限");
+      }
+      //private权限的内部类，即这是私有的内部类，只能在本类中访问
+      private class InnerClass {
+      }
+  }
+  ```
+   
+  错误示例：
+  ```java
+  public class Test {
+      void cc() { 		      //默认访问权限，能在本包范围内使用
+          public int aa;                 //错误，局部变量没有访问权限控制
+          protected boolean bb; //错误，局部变量没有访问权限控制
+          System.out.println("包访问权限");
+      }
+      //private权限的内部类，即这是私有的内部类，只能在本类使用
+      private class InnerClass {
+      }
+   }
+  ```
+
+### 4.5 封装与构造
+### 1. 封装
+- 实现封装的步骤：
+    - 将类中的属性设置为私有的
+    - 提供公共的set和get方法来获取和设置属性值
+    - 在set和get方法中加入属性控制语句
+
+### 2. 构造方法
+- 构造方法的作用：创建对象
+
+代码示例1：
+```java
+class Student{
+    public Student() {  
+        System.out.println("调用了无参构造方法");
+    }
+}
+public class Example05 {
+    public static void main(String[] args) {
+        System.out.println("声明对象...");
+        Student stu = null;         //声明对象
+        System.out.println("实例化对象...");
+        stu = new Student();     	//实例化对象
+    }
+}
+```
+
+输出结果：
+```
+声明对象...
+实例化对象...
+调用了无参构造方法
+```
+
+代码示例2：
+```java
+class Student{
+    private String name;
+    private int age;
+    public Student(String n, int a) {
+        name = n;
+        age = a;
+        System.out.println("调用了有参构造");
+    }
+    public void read(){
+        System.out.println("我是:"+name+",年龄:"+age);
+    }
+}
+public class Example06 {
+    public static void main(String[] args) {
+        Student stu = new Student("张三",18); // 实例化Student对象
+        stu.read();
+    }
+}
+```
+
+输出结果：
+```
+调用了有参构造
+我是:张三,年龄:18
+```
+
+### 3. 构造与封装的好处
+- 构造方法可以保证对象的属性被正确的初始化,构造方法可以确保对象的属性被正确初始化，
+并通过公共的 getter 和 setter 方法使私有属性可以被外部类访问和修改。
+- 封装可以保证数据的安全性
+
+### 4. 构造方法的重载
+代码示例：
+```java
+class Student {
+    private String name;
+    private int age;
+
+    public Student() {System.out.println("调用了无参数的构造方法");}
+
+    public Student(String n) {
+        name = n;
+        System.out.println("调用了一个参数的构造方法");
+    }
+
+    public Student(String n, int a) {
+        name = n;
+        age = a;
+        System.out.println("调用了两个参数的构造方法");
+    }
+
+    public void read() {
+        System.out.println("我是:" + name + ",年龄:" + age);
+    }
+}
+
+public class Example07 {
+    public static void main(String[] args) {
+        Studnet stu = new Student();         // 实例化Student对象
+        Student stu1 = new Student("张三");   // 实例化Student对象
+        Student stu2 = new Student("张三", 18);   // 实例化Student对象
+        stu.read();
+        stu1.read();
+        stu2.read();
+    }
+}
+```
+
+输出结果：
+```
+调用了无参数的构造方法
+调用了一个参数的构造方法
+调用了两个参数的构造方法
+我是:,年龄:0
+我是:张三,年龄:0
+我是:张三,年龄:18
+```
+   
+### 4.6 this关键字
+- this关键字的作用：指向当前对象
+- this关键字的使用场景：
+    - 当局部变量和成员变量重名时，可以使用this关键字来区分
+    - 当构造方法中需要调用其他的构造方法时，可以使用this关键字来调用
+    - 当方法中需要返回当前对象时，可以使用this关键字来返回
+- this关键字的使用格式：
+    - this.成员变量名
+    - this.成员方法名
+    - this(参数列表)
+- this关键字的使用示例：
     ```java
     class Student {
-        String name;
-        void read() {  
-              System.out.println("大家好，我是" + name + ",我在看书!");
-        }
-    }
-    public class Test {
-        public static void main(String[] args[]) {  
-              Student stu = new Student();         //创建并实例化对象
-        }
-    }
-    ```
-
-4. 访问控制权限
-    - public：公共的
-    - private：私有的
-    - protected：受保护的
-    - default：默认的
-   
-    |  访问控制权限   | 同一个类中 | 同一个包的类 | 不同包的子类 | 全局范围 |
-    |:---------:|:-----:|:------:|:------:|:----:|
-    |  public   |   √   |   √    |   √    |  √   |
-    | protected |   √   |   √    |   √    |  ×   |
-    |  default  |   √   |   √    |   ×    |  ×   |
-    |  private  |   √   |   ×    |   ×    |  ×   |
-
-    代码块举例：
-    ```java
-   public class Test {
-        public int aa;	//aa可以被所有的类访问
-        protected boolean bb; //bb可以被所有子类以及本包的类访问
-        void cc() { 	//默认访问权限，能在本包范围内问
-            System.out.println("包访问权限");
-        }
-        //private权限的内部类，即这是私有的内部类，只能在本类中访问
-        private class InnerClass {
-        }
-    }
-    ```
-   
-    错误示例：
-    ```java
-    public class Test {
-        void cc() { 		      //默认访问权限，能在本包范围内使用
-    	    public int aa;                 //错误，局部变量没有访问权限控制
-    	    protected boolean bb; //错误，局部变量没有访问权限控制
-        	System.out.println("包访问权限");
-        }
-        //private权限的内部类，即这是私有的内部类，只能在本类使用
-        private class InnerClass {
-        }
-     }
-    ```
-
-5. 封装
-    - 实现封装的步骤：
-        - 将类中的属性设置为私有的
-        - 提供公共的set和get方法来获取和设置属性值
-        - 在set和get方法中加入属性控制语句
-
-6. 构造方法
-    - 构造方法的作用：创建对象
-   
-    代码示例1：
-    ```java
-    class Student{
-        public Student() {  
-            System.out.println("调用了无参构造方法");
-        }
-    }
-    public class Example05 {
-        public static void main(String[] args) {
-            System.out.println("声明对象...");
-            Student stu = null;         //声明对象
-            System.out.println("实例化对象...");
-            stu = new Student();     	//实例化对象
-        }
-    }
-   ```
-   
-    输出结果：
-    ```
-    声明对象...
-    实例化对象...
-    调用了无参构造方法
-    ```
-   
-    代码示例2：
-    ```java
-    class Student{
         private String name;
         private int age;
-        public Student(String n, int a) {
-            name = n;
-            age = a;
-            System.out.println("调用了有参构造");
+        public Student(String name, int age) {
+            this.name = name;
+            this.age = age;
         }
-        public void read(){
-            System.out.println("我是:"+name+",年龄:"+age);
+        public void read() {
+            System.out.println("我是:" + name + ",年龄:" + age);
         }
     }
-    public class Example06 {
+    public class Example08 {
         public static void main(String[] args) {
-            Student stu = new Student("张三",18); // 实例化Student对象
+            Student stu = new Student("张三", 18);   // 实例化Student对象
             stu.read();
         }
     }
@@ -282,56 +372,7 @@ public class Example {
    
     输出结果：
     ```
-    调用了有参构造
-    我是:张三,年龄:18
-    ```
-
-7. 构造与封装的好处
-    - 构造方法可以保证对象的属性被正确的初始化,构造方法可以确保对象的属性被正确初始化，
-    并通过公共的 getter 和 setter 方法使私有属性可以被外部类访问和修改。
-    - 封装可以保证数据的安全性
-
-8. 构造方法的重载
-    代码示例：
-    ```java
-   class Student {
-        private String name;
-        private int age;
-
-        public Student() { }
-
-        public Student(String n) {
-            name = n;
-            System.out.println("调用了一个参数的构造方法");
-        }
-    
-        public Student(String n, int a) {
-            name = n;
-            age = a;
-            System.out.println("调用了两个参数的构造方法");
-        }
-
-        public void read() {
-            System.out.println("我是:" + name + ",年龄:" + age);
-        }
-    }
-    
-    public class Example07 {
-        public static void main(String[] args) {
-            Student stu1 = new Student("张三");
-            Student stu2 = new Student("张三", 18);   // 实例化Student对象
-            stu1.read();
-            stu2.read();
-        }
-    }
-    ```
-   
-    输出结果：
-    ```
-    调用了一个参数的构造方法
-    调用了两个参数的构造方法
-    我是:张三,年龄:0
     我是:张三,年龄:18
     ```
    
-    
+
