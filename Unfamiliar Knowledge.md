@@ -189,6 +189,48 @@ public class Example {
     - private：私有的
     - protected：受保护的
     - default：默认的
+   
+    |  访问控制权限   | 同一个类中 | 同一个包的类 | 不同包的子类 | 全局范围 |
+    |:---------:|:-----:|:------:|:------:|:----:|
+    |  public   |   √   |   √    |   √    |  √   |
+    | protected |   √   |   √    |   √    |  ×   |
+    |  default  |   √   |   √    |   ×    |  ×   |
+    |  private  |   √   |   ×    |   ×    |  ×   |
 
-5. 
+    代码块举例：
+    ```java
+   public class Test {
+        public int aa;	//aa可以被所有的类访问
+        protected boolean bb; //bb可以被所有子类以及本包的类访问
+        void cc() { 	//默认访问权限，能在本包范围内问
+            System.out.println("包访问权限");
+        }
+        //private权限的内部类，即这是私有的内部类，只能在本类中访问
+        private class InnerClass {
+        }
+    }
+    ```
+   
+    错误示例：
+    ```java
+    public class Test {
+        void cc() { 		      //默认访问权限，能在本包范围内使用
+    	    public int aa;                 //错误，局部变量没有访问权限控制
+    	    protected boolean bb; //错误，局部变量没有访问权限控制
+        	System.out.println("包访问权限");
+        }
+        //private权限的内部类，即这是私有的内部类，只能在本类使用
+        private class InnerClass {
+        }
+     }
+    ```
 
+5. 封装
+    - 实现封装的步骤：
+        - 将类中的属性设置为私有的
+        - 提供公共的set和get方法来获取和设置属性值
+        - 在set和get方法中加入属性控制语句
+
+6. 构造方法
+    - 构造方法的作用：创建对象
+    
