@@ -141,27 +141,54 @@ public class Example {
 
 ### 4.2 类与对象
 1. 类的定义格式： 
-``` 
-class 类名{
-    属性;
-    方法;
-}
-```
-
+    ``` 
+    class 类名{
+        属性;
+        方法;
+    }
+    ```
 
 2. 类中可以定义的内容：
     - 属性：成员变量
     - 方法：成员方法
 
-代码示例：
-```java
-public class testNo4 {
-    public static String name;
-    public static double year;
-    public static String favor;
-    public static void intro(){
-        System.out.println("大家好，ta是练习时长"+year+"年的练习生"+name+"，喜欢"+favor);
+    代码示例：
+    ```java
+    public class testNo4 {
+        public static String name;
+        public static double year;
+        public static String favor;
+        public static void intro(){
+            System.out.println("大家好，ta是练习时长"+year+"年的练习生"+name+"，喜欢"+favor);
+        }
     }
-}
-```
+    ```
+3. 对象的创建和使用
+    - 创建对象的格式：类名 对象名 = new 类名();
+    - 使用对象的格式：对象名.对象成员
+
+    例如：testNo4[][] people = new testNo4[group][seat];
+    
+    代码示例：
+    ```java
+    class Student {
+        String name;
+        void read() {  
+              System.out.println("大家好，我是" + name + ",我在看书!");
+        }
+    }
+    public class Test {
+        public static void main(String[] args[]) {  
+              Student stu = new Student();         //创建并实例化对象
+        }
+    }
+    ```
+
+4. 访问控制权限
+    - public：公共的
+    - private：私有的
+    - protected：受保护的
+    - default：默认的
+
+5. 
 
