@@ -140,7 +140,7 @@ public class Example {
 - 多态
 
 ### 4.2 类与对象
-### 1. 类的定义格式： 
+#### 1. 类的定义格式： 
 ``` 
 class 类名{
     属性;
@@ -148,7 +148,7 @@ class 类名{
 }
 ```
 
-### 2. 类中可以定义的内容：
+#### 2. 类中可以定义的内容：
 - 属性：成员变量
 - 方法：成员方法
 
@@ -226,13 +226,13 @@ public class testNo4 {
   ```
 
 ### 4.5 封装与构造
-### 1. 封装
+#### 1. 封装
 - 实现封装的步骤：
     - 将类中的属性设置为私有的
     - 提供公共的set和get方法来获取和设置属性值
     - 在set和get方法中加入属性控制语句
 
-### 2. 构造方法
+#### 2. 构造方法
 - 构造方法的作用：创建对象
 
 代码示例1：
@@ -287,12 +287,12 @@ public class Example06 {
 我是:张三,年龄:18
 ```
 
-### 3. 构造与封装的好处
+#### 3. 构造与封装的好处
 - 构造方法可以保证对象的属性被正确的初始化,构造方法可以确保对象的属性被正确初始化，
 并通过公共的 getter 和 setter 方法使私有属性可以被外部类访问和修改。
 - 封装可以保证数据的安全性
 
-### 4. 构造方法的重载
+#### 4. 构造方法的重载
 代码示例：
 ```java
 class Student {
@@ -340,39 +340,39 @@ public class Example07 {
 ```
    
 ### 4.6 this关键字
-- this关键字的作用：指向当前对象
-- this关键字的使用场景：
-    - 当局部变量和成员变量重名时，可以使用this关键字来区分
-    - 当构造方法中需要调用其他的构造方法时，可以使用this关键字来调用
-    - 当方法中需要返回当前对象时，可以使用this关键字来返回
-- this关键字的使用格式：
-    - this.成员变量名
-    - this.成员方法名
-    - this(参数列表)
-- this关键字的使用示例：
-    ```java
-    class Student {
-        private String name;
-        private int age;
-        public Student(String name, int age) {
-            this.name = name;
-            this.age = age;
-        }
-        public void read() {
-            System.out.println("我是:" + name + ",年龄:" + age);
-        }
+#### 1. this关键字的作用：指向当前对象
+#### 2. this关键字的使用场景：
+- 当局部变量和成员变量重名时，可以使用this关键字来区分
+- 当构造方法中需要调用其他的构造方法时，可以使用this关键字来调用
+- 当方法中需要返回当前对象时，可以使用this关键字来返回
+#### 3. this关键字的使用格式：
+- this.成员变量名
+- this.成员方法名
+- this(参数列表)
+#### 4. this关键字的使用示例：
+```java
+class Student {
+    private String name;
+    private int age;
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
-    public class Example08 {
-        public static void main(String[] args) {
-            Student stu = new Student("张三", 18);   // 实例化Student对象
-            stu.read();
-        }
+    public void read() {
+        System.out.println("我是:" + name + ",年龄:" + age);
     }
-    ```
-   
-    输出结果：
-    ```
-    我是:张三,年龄:18
-    ```
+}
+public class Example08 {
+    public static void main(String[] args) {
+        Student stu = new Student("张三", 18);   // 实例化Student对象
+        stu.read();
+    }
+}
+```
+
+输出结果：
+```
+我是:张三,年龄:18
+```
    
 
