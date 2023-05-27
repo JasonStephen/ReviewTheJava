@@ -132,9 +132,36 @@ public class Example {
 总销售额为: 219 万元。
 ```
 
+---
+## 四、面向对象
+### 4.1 面向对象的三大特征
+- 封装
+- 继承
+- 多态
+
+### 4.2 类与对象
+1. 类的定义格式： 
+``` 
+class 类名{
+    属性;
+    方法;
+}
+```
 
 
+2. 类中可以定义的内容：
+    - 属性：成员变量
+    - 方法：成员方法
 
-
-
+代码示例：
+```java
+public class testNo4 {
+    public static String name;
+    public static double year;
+    public static String favor;
+    public static void intro(){
+        System.out.println("大家好，ta是练习时长"+year+"年的练习生"+name+"，喜欢"+favor);
+    }
+}
+```
 
