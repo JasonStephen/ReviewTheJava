@@ -33,7 +33,15 @@
         - char 占用两个字节，可以用ASCII码表示,也可以用Unicode表示
     - 字符串
 - **变量的类型转换**
-    - 自动类型转换
-        - 要求：数据类型兼容
-        - 目标类型大于源类型的取值范围
+    - 自动类型转换(又称为隐式类型转换)
+        - 要求：数据类型兼容(例如：int和byte兼容)
+        - 目标类型大于源类型的取值范围(例如：int类型取值范围大于byte类型)
     - 强制类型转换
+        - 整数类型之间可以实现转换
+            - byte类型的数据可以赋值给short、int、long类型的变量
+            - short、char类型的数据可以赋值给int、long类型的变量
+            - int类型的数据可以赋值给long类型的变量
+        - 整数类型转换为float类型
+            - byte、char、short、int类型的数据可以赋值给float类型的变量。
+        - 整数类型转换为double类型
+            - byte、char、short、int、long、float类型的数据可以赋值给double类型的变量。
