@@ -99,9 +99,31 @@
 
 
 ### 3.3 二维数组的静态初始化
-    举例：int[][] xx = {{1,2},{3,4,5,6},{7,8,9}};
-    含义：二维数组中有三个一维数组，第一个一维数组有两个元素，第二个一维数组有四个元素，第三个一维数组有三个元素
-    例如：xx[0][1] = 2; xx[1][3] = 6; xx[2][2] = 9;
+举例：int[][] xx = {{1,2},{3,4,5,6},{7,8,9}};
+含义：二维数组中有三个一维数组，第一个一维数组有两个元素，第二个一维数组有四个元素，第三个一维数组有三个元素
+例如：xx[0][1] = 2; xx[1][3] = 6; xx[2][2] = 9;
+    
+    
+```java
+public class Example {
+    public static void main(String[] args) {
+        int[][] arr = new int[3][];          // 定义一个长度为3的二维数组
+        arr[0] = new int[]{11, 12};         // 为数组的元素赋值
+        arr[1] = new int[]{21, 22, 23};
+        arr[2] = new int[]{31, 32, 33, 34};
+        int sum = 0;                                        // 定义变量记录总销售额
+        for (int i = 0; i < arr.length; i++) {         // 遍历数组元素
+            int groupSum = 0;                   // 定义变量记录小组销售总额
+            for (int j = 0; j < arr[i].length; j++) {// 遍历小组内每个人的销售额
+                groupSum = groupSum + arr[i][j];
+            }
+            sum = sum + groupSum;    // 累加小组销售额
+            System.out.println("第" + (i + 1) + "小组销售额为：" + groupSum + " 万元。");
+        }
+        System.out.println("总销售额为: " + sum + " 万元。");
+    }
+}
+```
 
 
 
