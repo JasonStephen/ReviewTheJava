@@ -233,4 +233,62 @@ public class Example {
 
 6. 构造方法
     - 构造方法的作用：创建对象
+   
+    代码示例1：
+    ```java
+    class Student{
+        public Student() {  
+            System.out.println("调用了无参构造方法");
+        }
+    }
+    public class Example05 {
+        public static void main(String[] args) {
+            System.out.println("声明对象...");
+            Student stu = null;         //声明对象
+            System.out.println("实例化对象...");
+            stu = new Student();     	//实例化对象
+        }
+    }
+   ```
+   
+    输出结果：
+    ```
+    声明对象...
+    实例化对象...
+    调用了无参构造方法
+    ```
+   
+    代码示例2：
+    ```java
+    class Student{
+        private String name;
+        private int age;
+        public Student(String n, int a) {
+            name = n;
+            age = a;
+            System.out.println("调用了有参构造");
+        }
+        public void read(){
+            System.out.println("我是:"+name+",年龄:"+age);
+        }
+    }
+    public class Example06 {
+        public static void main(String[] args) {
+            Student stu = new Student("张三",18); // 实例化Student对象
+            stu.read();
+            ......
+    ```
+   
+    输出结果：
+    ```
+    调用了有参构造
+    我是:张三,年龄:18
+    ```
+
+7. 构造与封装的好处
+    - 构造方法可以保证对象的属性被正确的初始化,构造方法可以确保对象的属性被正确初始化，
+    并通过公共的 getter 和 setter 方法使私有属性可以被外部类访问和修改。
+    - 封装可以保证数据的安全性
+
+
     
