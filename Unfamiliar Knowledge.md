@@ -338,11 +338,42 @@ public class Example07 {
 我是:张三,年龄:0
 我是:张三,年龄:18
 ```
+
+#### 5. 构造块
+示例代码：
+```java
+class Student{
+   String name;    		//成员属性
+   {
+        System.out.println("我是构造代码块");       //与构造方法同级
+    }
+    //构造方法
+    public Student() {
+        System.out.println("我是Student类的构造方法");
+    }
+}
+public class Example12 {
+    public static void main(String[] args) {
+        Student stu1 = new Student();
+        Student stu2 = new Student();
+    }
+}
+```
+输出结果：
+```
+我是构造代码块
+我是Student类的构造方法
+我是构造代码块
+我是Student类的构造方法
+```
+注意：
+- 构造块在创建对象时被调用，每创建一个对象就调用一次
+- 位置不能错了，必须在构造方法的前面
    
 ### 4.6 this关键字
 #### 1. this关键字的作用：指向当前对象
 #### 2. this关键字的使用场景：
-- 当局部变量和成员变量重名时，可以使用this关键字来区分
+- 当<u>局部变量</u>和<u>成员变量</u>重名时，可以使用this关键字来区分
 - 当构造方法中需要调用其他的构造方法时，可以使用this关键字来调用
 - 当方法中需要返回当前对象时，可以使用this关键字来返回
 #### 3. this关键字的使用格式：
@@ -374,5 +405,9 @@ public class Example08 {
 ```
 我是:张三,年龄:18
 ```
-   
+
+### 4.7 static关键字
+#### 1. static修饰的属性，称为静态属性
+    访问格式：类名.静态属性名
+
 
