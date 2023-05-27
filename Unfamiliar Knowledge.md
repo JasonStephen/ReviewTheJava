@@ -276,7 +276,8 @@ public class Example {
         public static void main(String[] args) {
             Student stu = new Student("张三",18); // 实例化Student对象
             stu.read();
-            ......
+        }
+    }
     ```
    
     输出结果：
@@ -290,5 +291,47 @@ public class Example {
     并通过公共的 getter 和 setter 方法使私有属性可以被外部类访问和修改。
     - 封装可以保证数据的安全性
 
+8. 构造方法的重载
+    代码示例：
+    ```java
+   class Student {
+        private String name;
+        private int age;
 
+        public Student() { }
+
+        public Student(String n) {
+            name = n;
+            System.out.println("调用了一个参数的构造方法");
+        }
+    
+        public Student(String n, int a) {
+            name = n;
+            age = a;
+            System.out.println("调用了两个参数的构造方法");
+        }
+
+        public void read() {
+            System.out.println("我是:" + name + ",年龄:" + age);
+        }
+    }
+    
+    public class Example07 {
+        public static void main(String[] args) {
+            Student stu1 = new Student("张三");
+            Student stu2 = new Student("张三", 18);   // 实例化Student对象
+            stu1.read();
+            stu2.read();
+        }
+    }
+    ```
+   
+    输出结果：
+    ```
+    调用了一个参数的构造方法
+    调用了两个参数的构造方法
+    我是:张三,年龄:0
+    我是:张三,年龄:18
+    ```
+   
     
