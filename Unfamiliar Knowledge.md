@@ -490,6 +490,68 @@ class 子类 extends 父类{
 
 示例代码：
 ```java
+// 定义Animal类
+class Animal {		
+    // 定义动物叫的方法		
+    public void shout() {			  
+        System.out.println("动物发出叫声");
+    }
+}
+
+// 定义Dog类继承Animal类
+class Dog extends Animal {    
+    // 重写父类Animal中的shout()方法,扩大了访问权限
+    public void shout() {			 
+        super.shout();      // 调用父类中的shout()方法，并且输出System.out.println("动物发出叫声")
+        System.out.println("汪汪汪……");  
+    }
+    
+    public void printName(){
+        System.out.println("名字:" + super.name);      // 访问父类中的name属性
+    }
+}
+
+// 定义测试类
+public class Example05 {
+    public static void main(String[] args) {
+        Dog dog = new Dog();    // 创建Dog类的对象
+        dog.shout();                      // 调用Dog类重写的shout()方法
+        dog.printName();                // 调用Dog类中的printName()方法
+    }
+}
+
+```
+输出结果：
+```
+动物发出叫声
+汪汪汪……
+名字：牧羊犬
+```
+
+#### 2. 使用super关键字调用父类的构造方法
+- super(参数列表)
+
+#### 3。 Super和This区别关系表格
+|  关键字  |    调用构造方法    |  调用方法   |     访问属性     |
+|:-----:|:------------:|:-------:|:------------:|
+| super | 必须放在构造方法的第一行 | 可以在任何位置 | 可以访问父类的非私有属性 |
+| this  | 必须放在构造方法的第一行 | 可以在任何位置 | 可以访问本类的非私有属性 |
+
+#### 4. 注意事项，super和this不能同时出现在一个构造方法中
 
 
+### 4.10 final关键字
+#### 1. final与继承之间的关系
+- final关键字可以修饰类、属性和方法
+- final修饰的类不能被继承
+- final修饰的方法不能被重写
 
+#### 2. final与赋值之间的关系
+- final修饰的属性不能被修改，即不能被重新赋值
+- final修饰的属性必须在定义时或构造方法中进行初始化赋值，不能在其他方法中赋值
+- final修饰的属性一般和static关键字一起使用，称为常量，常量名一般使用`大写字母`
+- final修饰的属性一般使用public static final修饰，称为全局常量，全局常量可以直接通过类名访问
+    - public static final String NAME = "哈士奇";
+- final修饰的属性一般使用private static final修饰，称为私有常量，私有常量只能在本类中访问
+
+### 4.11 抽象类
