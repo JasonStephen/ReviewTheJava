@@ -20,6 +20,9 @@
 2) 目前的数组访问存在初始化问题，需要解决。
 3) 需要检查AddHuman的其他问题
 
+### 计划工作：
+1) 使用继承实现功能
+
 ---
 # 老师菜菜捞捞
 ![老师菜菜捞捞](https://th.bing.com/th/id/OIP.69YuMynsldmpWw_1uD13jwAAAA?w=258&h=172&c=7&r=0&o=5&pid=1.7)
