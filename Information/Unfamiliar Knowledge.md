@@ -381,6 +381,10 @@ public class Example12 {
 - 当<u>局部变量</u>和<u>成员变量</u>重名时，可以使用this关键字来区分
 - 当构造方法中需要调用其他的构造方法时，可以使用this关键字来调用
 - 当方法中需要返回当前对象时，可以使用this关键字来返回
+- 只能在构造方法中使用this调用其它的构造方法，不能在成员方法中使用
+- 在构造方法中，使用this调用构造方法的语句必须位于第一行，且只能出现一次
+- this关键字可以用于区分成员变量与局部变量
+- this不可以出现在任何方法中
 #### 3. this关键字的使用格式：
 - this.成员变量名
 - this.成员方法名
@@ -655,5 +659,20 @@ new 继承的父类或实现的接口名(){
 }
 ```
 
-
-## 五、异常
+---
+## 五、异常(详细的异常内容请见Error.md)
+示例代码（运行后会出错）：
+```java
+package com.itheima;
+public class Example01 {                      
+	public static void main(String[] args) {
+		int result = divide(4, 0);    // 调用divide()方法，第2个参数为0
+		System.out.println(result);    
+	}
+    	//下面的方法实现了两个整数相除
+	public static int divide(int x, int y) { 
+		int result = x / y;  // 定义一个变量result记录两个数相除的结果
+		return result;        // 将结果返回
+	}
+ }
+```
